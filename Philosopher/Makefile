@@ -19,6 +19,7 @@ CFLAGS = -Wall -Wextra -Werror
 #LIB = -lpthread
 
 SRC     =  philo_utils.c \
+			philo_utils2.c \
 			InitData.c \
 			philo.c \
 			routine.c \

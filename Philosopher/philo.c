@@ -55,7 +55,7 @@ int main(int argc, char **argv)
         pthread_mutex_lock(&(philo->data_race));
         if (data->count2_eat == data->num_philo)
         {
-            printf("%ldms they all eat %d time\n", start_time(philo->data), philo->data->count2_eat);
+            printf("%ldms they all eat %d time\n", start_time(philo->data), philo->data->max_e);
             break;
         }
         pthread_mutex_unlock(&(philo->data_race));
@@ -66,10 +66,6 @@ int main(int argc, char **argv)
     {
         pthread_detach(thread[x]);
         x++;
-    }
-    while (19)
-    {
-        
     }
     //free(thread);
     return (0);
@@ -114,6 +110,14 @@ int print_error()
 
 int ft_verif_end(t_philo *philo)
 {
+    pthread_mutex_lock(&(philo->data_race));
+    if (philo->data->is_dead == 1)
+    {
+        pthread_mutex_unlock(&(philo->data_race));
+        return (1);
+    }
+    pthread_mutex_unlock(&(philo->data_race));
+    usleep(25);
     pthread_mutex_lock(&(philo->data_race));
     if (philo->data->is_dead == 1)
     {

@@ -30,6 +30,7 @@ void    *ft_routine(void *arg)
     long    t_last_eat;
 
     philo = (t_philo *)arg;
+    t_last_eat = 0;
     pthread_mutex_lock(&(philo->data_race));
     if (philo->identity % 2 == 1)
         usleep(30);
