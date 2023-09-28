@@ -22,6 +22,7 @@ SRC     =  philo_utils.c \
 			philo_utils2.c \
 			InitData.c \
 			philo.c \
+			philo2.c \
 			routine.c \
 
 OBJ = $(SRC:.c=.o)
